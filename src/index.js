@@ -36,6 +36,7 @@ export default {
   init(pixelId, advancedMatching = {}, options = defaultOptions) {
     /* eslint-disable */
     if (typeof fbq === 'undefined') {
+      console.log('Running inside conditional')
       !function (f, b, e, v, n, t, s) {
         if (f.fbq) return; n = f.fbq = function () {
           n.callMethod ?
