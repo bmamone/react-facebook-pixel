@@ -35,7 +35,7 @@ const defaultOptions = {
 export default {
   init(pixelId, advancedMatching = {}, options = defaultOptions) {
     /* eslint-disable */
-    if (typeof fbq === undefined || !fbq) {
+    if (typeof fbq === 'undefined' || !fbq) {
       !function (f, b, e, v, n, t, s) {
         if (f.fbq) return; n = f.fbq = function () {
           n.callMethod ?
