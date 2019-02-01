@@ -60,6 +60,9 @@ export default {
 
       initialized = true;
       debug = options.debug;
+      if (debug) {
+        log(`called fbq(\'init\', \'${pixelId}\');`);
+      }
     }
   },
 
@@ -117,7 +120,7 @@ export default {
     if (debug) {
       log(`called fbq('trackSingle', '${event}');`);
 
-      if (data) {
+      if (event) {
         log('on pixel', pixel);
       }
     }
