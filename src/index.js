@@ -33,7 +33,7 @@ const defaultOptions = {
 
 //
 export default {
-  init(pixelId, advancedMatching = {}, options = defaultOptions) {
+  inject() {
     /* eslint-disable */
     !function (f, b, e, v, n, t, s) {
       if (f.fbq) return; n = f.fbq = function () {
@@ -47,7 +47,9 @@ export default {
     }(window, document, 'script',
       'https://connect.facebook.net/en_US/fbevents.js');
     /* eslint-enable */
+  },
 
+  init(pixelId, advancedMatching = {}, options = defaultOptions) {
     if (!pixelId) {
       console.warn('Please insert pixel id for initializing');
     } else {
@@ -102,6 +104,22 @@ export default {
 
       if (data) {
         log('with data', data);
+      }
+    }
+  },
+
+  trackSingle(pixel, event) {
+    if (!verifyInit()) {
+      return;
+    }
+
+    fbq('trackSingle', pixel, event)
+
+    if (debug) {
+      log(`called fbq('trackSingle', '${event}');`);
+
+      if (data) {
+        log('on pixel', pixel);
       }
     }
   },
